@@ -2,7 +2,7 @@
     *, *::before, *::after {
         box-sizing: border-box;
     }
-
+    
     body {
         background-color: #000000;
         margin: 0;
@@ -26,7 +26,7 @@
 
     .pixel-window {
         background-color: #000000;
-        border: 6px double #ffffff;
+        border: 6px double #ffffff; 
         width: 400px;
         max-width: 90%;
         box-shadow: 12px 12px 0px #1a1a1a;
@@ -67,7 +67,7 @@
     .pixel-btn {
         background: transparent;
         color: #ffffff;
-        border: 4px outset #ffffff;
+        border: 4px outset #ffffff; 
         padding: 12px 24px;
         font-size: 11pt;
         cursor: pointer;
@@ -78,7 +78,7 @@
     .pixel-btn:hover {
         background: #ffffff;
         color: #000000;
-        border: 4px inset #ffffff;
+        border: 4px inset #ffffff; 
     }
 
     .pixel-smiler {
@@ -101,7 +101,7 @@
         transform: translate(-50%, -50%);
         flex-direction: column;
         align-items: center;
-        gap: 0;
+        gap: 0px;
         z-index: 6;
         user-select: none;
         pointer-events: none;
@@ -112,7 +112,7 @@
         font-size: 26pt;
         text-align: center;
         margin-bottom: 5px;
-        text-shadow:
+        text-shadow: 
             0 0 5px #ffccff,
             0 0 15px #ff3399,
             0 0 30px #ff3399;
@@ -121,15 +121,14 @@
     .neon-heart-svg {
         width: 140px;
         height: 140px;
-        filter:
-            drop-shadow(0 0 4px #ffccff)
-            drop-shadow(0 0 10px #ff3399)
-            drop-shadow(0 0 25px #ff3399)
-            drop-shadow(0 0 45px #ff3399);
+        filter: drop-shadow(0 0 4px #ffccff)
+                drop-shadow(0 0 10px #ff3399)
+                drop-shadow(0 0 25px #ff3399)
+                drop-shadow(0 0 45px #ff3399);
     }
 
     .matrix-bg {
-        display: none;
+        display: none; 
         position: absolute;
         top: 0;
         left: 0;
@@ -138,7 +137,7 @@
         justify-content: space-between;
         overflow: hidden;
         z-index: 1;
-        opacity: 0;
+        opacity: 0; 
         transition: opacity 0.2s ease;
     }
 
@@ -146,7 +145,7 @@
         display: flex;
         flex-direction: column;
         white-space: nowrap;
-        font-size: 13px;
+        font-size: 13px; 
         line-height: 1.5;
         color: rgba(255, 51, 153, 0.45);
         user-select: none;
@@ -173,7 +172,6 @@
 
 
 <div class="wrapper" id="viewInterface">
-
     <div class="pixel-window" id="popupWindow">
 
         <div class="window-bar">
@@ -185,13 +183,10 @@
         <div class="window-body">
 
             <h1 class="title-text">
-                Justine sache que t'es parfaite à mes yeux,
-                t'es une cousine adorable,
-                je serai toujours là pour toi promis :p
+                Justine sache que t'es parfaite à mes yeux, t'es une cousine adorable, je serai toujours là pour toi promis :p
             </h1>
 
             <div class="btn-container">
-
                 <button class="pixel-btn" onclick="triggerYes()">
                     Justine est parfaite
                 </button>
@@ -199,28 +194,22 @@
                 <button class="pixel-btn" onclick="triggerNo()">
                     Justine est parfaite
                 </button>
-
             </div>
+
         </div>
     </div>
 </div>
 
 
-<div class="pixel-smiler" id="smileContainer">
-    :)
-</div>
+<div class="pixel-smiler" id="smileContainer">:)</div>
 
 
-<div class="neon-center-set" id="neonSet">
+<div class="neon-center-set" id="neonSet" style="display: none;">
 
     <div class="neon-text"></div>
 
-    <svg
-        class="neon-heart-svg"
-        viewBox="0 0 24 24"
-        fill="#ffccff"
-    >
-        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    <svg class="neon-heart-svg" viewBox="0 0 24 24" fill="#ffccff">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
     </svg>
 
 </div>
@@ -230,18 +219,14 @@
 
 
 <script>
-
     const bgContainer = document.getElementById('bgContainer');
 
-
     function buildMatrixBackground() {
-
         bgContainer.innerHTML = '';
-
-        const charWidth = 95;
-        const columnCount =
-            Math.ceil(window.innerWidth / charWidth) + 1;
-
+        
+        const charWidth = 95; 
+        const columnCount = Math.ceil(window.innerWidth / charWidth) + 1;
+        
         let textBlock = "";
 
         for (let i = 0; i < 60; i++) {
@@ -252,66 +237,43 @@
 
             const col = document.createElement('div');
             col.className = 'matrix-column';
-
+            
             const moveDiv = document.createElement('div');
             moveDiv.className = 'matrix-move';
-
-            moveDiv.innerHTML =
-                textBlock + textBlock;
-
-            col.style.opacity =
-                (Math.random() * 0.5 + 0.3).toFixed(2);
-
-            moveDiv.style.animationDelay =
-                (Math.random() * -10) + 's';
+            moveDiv.innerHTML = textBlock + textBlock;
+            
+            col.style.opacity = (Math.random() * 0.5 + 0.3).toFixed(2);
+            moveDiv.style.animationDelay = (Math.random() * -10) + 's';
 
             col.appendChild(moveDiv);
             bgContainer.appendChild(col);
         }
     }
 
-
-    window.addEventListener(
-        'resize',
-        buildMatrixBackground
-    );
-
+    window.addEventListener('resize', buildMatrixBackground);
 
     function triggerYes() {
-
-        document.getElementById(
-            'viewInterface'
-        ).style.display = 'none';
-
-        document.getElementById(
-            'smileContainer'
-        ).style.display = 'block';
+        document.getElementById('viewInterface').style.display = 'none';
+        document.getElementById('smileContainer').style.display = 'block';
     }
-
 
     function triggerNo() {
 
-        const frame =
-            document.getElementById('popupWindow');
+        const frame = document.getElementById('popupWindow');
 
-        frame.style.transform =
-            'translate(4px, 4px)';
+        frame.style.transform = 'translate(4px, 4px)';
 
         setTimeout(() => {
-            frame.style.transform =
-                'translate(-4px, -4px)';
+            frame.style.transform = 'translate(-4px, -4px)';
         }, 40);
 
         setTimeout(() => {
-            frame.style.transform =
-                'translate(4px, -4px)';
+            frame.style.transform = 'translate(4px, -4px)';
         }, 80);
 
         setTimeout(() => {
 
-            document.getElementById(
-                'viewInterface'
-            ).style.display = 'none';
+            document.getElementById('viewInterface').style.display = 'none';
 
             buildMatrixBackground();
 
@@ -321,11 +283,8 @@
                 bgContainer.style.opacity = '1';
             }, 10);
 
-            document.getElementById(
-                'neonSet'
-            ).style.display = 'flex';
+            document.getElementById('neonSet').style.display = 'flex';
 
         }, 130);
     }
-
 </script>
